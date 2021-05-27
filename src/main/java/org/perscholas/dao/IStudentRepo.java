@@ -14,6 +14,9 @@ import javax.persistence.Entity;
         - add custom methods if needed
 
  */
+@Repository
 
-public interface IStudentRepo {
+public interface IStudentRepo extends JpaRepository<Student,Long> {
+    public Student findByStudentEmail(String studentEmail);
+
 }
