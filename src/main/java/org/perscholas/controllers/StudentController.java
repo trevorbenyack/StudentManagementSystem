@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@SessionAttributes({"student", "studentObject"})
+@SessionAttributes({"student", "studentObject"})  //creates a student object that canbe called
 @Controller
 @RequestMapping("/student")
 @AllArgsConstructor
@@ -17,6 +17,7 @@ public class StudentController {
 
     StudentService studentService;
 
+    // creates student object that can remeber what was entered
     @ModelAttribute("studentObject")
     public String studentObject() {
         return "";
