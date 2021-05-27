@@ -3,6 +3,7 @@ package org.perscholas.models;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
 
@@ -19,8 +20,7 @@ import java.io.Serializable;
 @Entity
 //Spring Boot
 @Component
-
-
+@Table(name = "course")
 public class Course implements Serializable {
     static final long serialVersionUID = 6381462249347345007L;
 
@@ -36,6 +36,13 @@ public class Course implements Serializable {
     @Id
     Long cId;
 
-
+    @ToString.Exclude
+    @ManyToMany
+    @JoinTable (
+        name="student_course",
+        inverseJoinColumns=@JoinColumn(name = "student_id"),
+        joinColumns=@JoinColumn(name = "course_id")
+    )
+    List<Course> students;
 
 }

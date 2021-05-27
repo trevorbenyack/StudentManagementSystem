@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head  th:replace="template :: html_header"></head>
+<body>
+<nav th:replace="template :: nav"></nav>
+<div class="card text-center">
+    <div class="card-header">
+        <h1> Student Detail </h1>
+    </div>
+    <div class="card-body">
+        <p class="card-title">Student Id: <span th:text="${student.studentId}">student name</span></p>
+        <p class="card-text">Student Name: <span th:text="${student.studentName}">student name</span></p>
+        <p class="card-text">Student Email: <span th:text="${student.studentEmail}">student name</span></p>
+        <p>Student Courses:</p>
+        <ul>
+            <li th:each="course : ${student.courses}" th:text="${course.courseName}">Course</li>
+        </ul>
+
+
+    </div>
+</div>
+
+
+<footer th:replace="template :: footer"></footer>
+
+</body>
+</html>

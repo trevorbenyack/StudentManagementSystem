@@ -1,14 +1,12 @@
 package org.perscholas.models;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 //lombok
 @Data
@@ -18,6 +16,7 @@ import java.io.Serializable;
 @Entity
 //springboot
 @Component
+@Table(name = "student")
 public class Student implements Serializable {
     static final long serialVersionUID = 6381462249347345007L;
 
@@ -32,7 +31,28 @@ public class Student implements Serializable {
     //fields
 
     @Id
-    Long sId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+            @Column(name = "student_id")
+    Long studentId;
+
+    @Column(nullable = false, unique = true, name = "student_email")
+    String studentEmail;
+
+    @Column(nullable = false, name = "student_name")
+    String studentName;
+
+    @Column(nullable = false, name = "student_password")
+    String studentPassword;
+
+    @ToString.Exclude
+    @ManyToMany
+    @JoinTable
+    (
+        name= "student_course",
+        joinColumns=@JoinColumn(name = "student_id"),
+        inverseJoinColumns=@JoinColumn( name = "course_id")
+    )
+    List<Course> courses;
 
 
 
