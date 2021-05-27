@@ -18,5 +18,6 @@ import javax.persistence.Entity;
 
 public interface IStudentRepo extends JpaRepository<Student,Long> {
     public Student findByStudentEmail(String studentEmail);
+    public Student findByStudentId(Long studentId);
 
 }

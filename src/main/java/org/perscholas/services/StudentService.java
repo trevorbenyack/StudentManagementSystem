@@ -20,8 +20,6 @@ public class StudentService {
             - add crud methods
      */
 
-
-
     // Show
     public List<Student> getAllStudents(){
         //logic
@@ -30,9 +28,8 @@ public class StudentService {
 
     // Find
     public Student getStudentbyId(Long id){
-        return sRepo.getById(id);
+        return sRepo.findByStudentId(id);
     }
-
     public Student getStudentByEmail(String studentEmail){
         return sRepo.findByStudentEmail(studentEmail);
     }

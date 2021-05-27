@@ -22,13 +22,21 @@ public class StudentController {
         return "";
     }
 
-    @GetMapping("/showStudentPage")
-    public String showStudent( Model model, @SessionAttribute("studentObject") String studentEmail){
-
-        Student student = studentService.getStudentByEmail(studentEmail);
+    // takes in studentEmail from form,
+    @GetMapping("/showStudentDetails")
+    public String showStudentDetailsByEmail(@SessionAttribute("studentObject") String studentEmail, Model model){
+        Student student = studentService.getStudentByEmail(studentEmail);  // uses sessions to take email from redirect
         model.addAttribute("student", student);
         log.info("student email through session is " + studentEmail);
         System.out.println("\n\n\n" + student + "\n\n\n");
+        return "showStudent";
+    }
+
+    @GetMapping("/{studentId}")
+    public String showStudentDetailsById(@PathVariable String studentId, Model model){
+        Student student = studentService.getStudentbyId(Long.parseLong(studentId));
+        model.addAttribute("student", student);
+        log.info("student email through session is " + studentId);
         return "showStudent";
     }
 
@@ -42,6 +50,5 @@ public class StudentController {
         model.addAttribute("studentObject", student_email);
         log.info("student email is " + student_email);
         return "redirect:/student/showStudentPage" ;
-
     }
 }
