@@ -9,7 +9,9 @@ import java.io.Serializable;
 import java.util.List;
 
 //lombok
-@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 //database
