@@ -7,9 +7,9 @@ import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 //Lombok
@@ -34,7 +34,13 @@ public class Course implements Serializable {
 
     //fields
     @Id
-    Long cId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "course_id")
+    Long courseId;
+    @Column(nullable = false, name = "course_name")
+    String courseName;
+    @Column(nullable = false, name = "course_instructor")
+    String courseInstructor;
 
     @ToString.Exclude
     @ManyToMany
