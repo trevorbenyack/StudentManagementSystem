@@ -8,4 +8,4 @@ Notes:
 - Fork repo
 
 
-![Project Details](sms.pdf)
+[Project Details](sms.pdf)
